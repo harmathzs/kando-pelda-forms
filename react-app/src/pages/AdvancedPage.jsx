@@ -26,7 +26,7 @@ export default class AdvancedPage extends React.Component {
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-color">Color picker:</label>
-                        <input type="color" id="adv-color" name="adv-color" value="#263159" onChange={e=>{}} />
+                        <input type="color" id="adv-color" name="adv-color" value="#263159" onChange={()=>{}} />
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-month">Month:</label>
@@ -63,11 +63,11 @@ export default class AdvancedPage extends React.Component {
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-number">Number:</label>
-                        <input type="number" id="adv-number" name="adv-number" min="0" max="100" step="1" value="42" onChange={e=>{}} />
+                        <input type="number" id="adv-number" name="adv-number" min="0" max="100" step="1" value="42" onChange={()=>{}} />
                     </div>
                     <div className="form-row range-bar">
                         <label htmlFor="adv-range">Range:</label>
-                        <input type="range" id="adv-range" name="adv-range" min="0" max="100" step="1" value="50" onInput={e=>{}} />
+                        <input type="range" id="adv-range" name="adv-range" min="0" max="100" step="1" value="50" onInput={()=>{}} />
                         <span id="rangeValue" style={{minWidth:'32px'}}>50</span>
                     </div>
                     <div className="form-row">
