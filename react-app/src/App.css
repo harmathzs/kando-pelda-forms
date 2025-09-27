@@ -58,7 +58,7 @@ html, body {
       border-bottom: 2.5px solid #f5d04c;
     }
 .container {
-  margin-top: 156px; /* 56px navbar */
+  margin-top: 76px; /* 56px navbar */
   margin-left: 100px;
   margin-right: auto;
   max-width: 840px;
