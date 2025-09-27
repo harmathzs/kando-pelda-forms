@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Handling Practice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fafafb;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 56px;
+      background: #263159;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      color: #fff;
+      padding: 0;
+    }
+    .navbar-left, .navbar-right {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .navbar-left {
+      margin-left: 24px;
+    }
+    .navbar-right {
+      margin-right: 24px;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font: inherit;
+      padding: 0 18px;
+      height: 56px;
+      cursor: pointer;
+      font-size: 1.05em;
+      letter-spacing: 0.03em;
+      transition: background 0.18s;
+      border-bottom: 2.5px solid transparent;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: #1e2235;
+      border-bottom: 2.5px solid #f5d04c;
+    }
+    .container {
+      margin-top: 70px; /* So content is not hidden behind navbar */
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 32px 14px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 16px rgba(38,49,89,0.10);
+    }
+    h2 {
+      color: #263159;
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    label {
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #384361;
+    }
+    input, select, textarea, button {
+      font: inherit;
+      padding: 7px;
+      border: 1px solid #ccd2e3;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.16s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #ffd700;
+      background: #fcfcfa;
+    }
+    .form-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom:2px;
+      flex-wrap: wrap;
+    }
+    .form-row label {
+      margin-bottom: 0;
+      min-width: 88px;
+    }
+    .radio-group, .checkbox-group {
+      display: flex;
+      gap: 16px;
+    }
+    .range-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    input[type='range'] {
+      width: 100%;
+      margin-right: 8px;
+    }
+    .button-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    button[type='submit'] {
+      background: #ffd700;
+      border: none;
+      color: #213159;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.17s;
+    }
+    button[type='reset'] {
+      background: #eee;
+      color: #213159;
+      border: 1px solid #ccd2e3;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.17s;
+    }
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+    @media (max-width: 600px) {
+      .container {
+        max-width: 100%;
+        padding: 16px 2vw;
+      }
+      .navbar-left, .navbar-right {
+        margin: 0;
+      }
+      .navbar {
+        padding: 0 2vw;
+      }
+    }
+    /* Hide the forms except the selected tab */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <button class="nav-btn active" id="tabSimple" onclick="showTab('simple')">Simple</button>
+      <button class="nav-btn" id="tabAdvanced" onclick="showTab('advanced')">Advanced</button>
+      <button class="nav-btn" id="tabFile" onclick="showTab('file')">File upload</button>
+    </div>
+    <div class="navbar-right">
+      <button class="nav-btn" id="tabLogin" onclick="showTab('login')">Login</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Simple -->
+    <div id="content-simple" class="tab-content active">
+      <h2>Simple Email Form</h2>
+      <form>
+        <label for="simpleEmail">Email address:</label>
+        <input type="email" id="simpleEmail" name="simpleEmail" placeholder="name@example.com" required autocomplete="on">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <!-- Advanced -->
+    <div id="content-advanced" class="tab-content">
+      <h2>Advanced Form Elements</h2>
+      <form autocomplete="on">
+        <div class="form-row">
+          <label for="adv-text">Text:</label>
+          <input type="text" id="adv-text" name="adv-text" placeholder="Text input sample">
+        </div>
+        <div class="form-row">
+          <label>Checkbox:</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="adv-checkbox1" name="adv-checkbox1"><label for="adv-checkbox1">Item 1</label>
+            <input type="checkbox" id="adv-checkbox2" name="adv-checkbox2"><label for="adv-checkbox2">Item 2</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Radio group:</label>
+          <div class="radio-group">
+            <input type="radio" id="adv-radio1" name="adv-radio" value="A"><label for="adv-radio1">A</label>
+            <input type="radio" id="adv-radio2" name="adv-radio" value="B"><label for="adv-radio2">B</label>
+            <input type="radio" id="adv-radio3" name="adv-radio" value="C"><label for="adv-radio3">C</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="adv-color">Color picker:</label>
+          <input type="color" id="adv-color" name="adv-color" value="#263159">
+        </div>
+        <div class="form-row">
+          <label for="adv-month">Month:</label>
+          <input type="month" id="adv-month" name="adv-month">
+        </div>
+        <div class="form-row">
+          <label for="adv-week">Week:</label>
+          <input type="week" id="adv-week" name="adv-week">
+        </div>
+        <div class="form-row">
+          <label for="adv-date">Date:</label>
+          <input type="date" id="adv-date" name="adv-date">
+        </div>
+        <div class="form-row">
+          <label for="adv-time">Time:</label>
+          <input type="time" id="adv-time" name="adv-time">
+        </div>
+        <div class="form-row">
+          <label for="adv-datetime">Local Datetime:</label>
+          <input type="datetime-local" id="adv-datetime" name="adv-datetime">
+        </div>
+        <div class="form-row">
+          <label for="adv-email">Email:</label>
+          <input type="email" id="adv-email" name="adv-email" placeholder="example@mail.com">
+        </div>
+        <div class="form-row">
+          <label for="adv-tel">Telephone:</label>
+          <input type="tel" id="adv-tel" name="adv-tel" placeholder="+36 20 123 4567">
+        </div>
+        <div class="form-row">
+          <label for="adv-hidden">Hidden value:</label>
+          <input type="hidden" id="adv-hidden" name="adv-hidden" value="sample_hidden">
+          <span style="color: #999;">(hidden in UI)</span>
+        </div>
+        <div class="form-row">
+          <label for="adv-number">Number:</label>
+          <input type="number" id="adv-number" name="adv-number" min="0" max="100" step="1" value="42">
+        </div>
+        <div class="form-row range-bar">
+          <label for="adv-range">Range:</label>
+          <input type="range" id="adv-range" name="adv-range" min="0" max="100" step="1" value="50" oninput="rangeValue.innerText = this.value">
+          <span id="rangeValue" style="min-width:32px;">50</span>
+        </div>
+        <div class="form-row">
+          <label for="adv-select">Select:</label>
+          <select id="adv-select" name="adv-select">
+            <option>--- Choose ---</option>
+            <option value="foo">Foo</option>
+            <option value="bar">Bar</option>
+            <option value="baz">Baz</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="adv-textarea">Textarea:</label>
+          <textarea id="adv-textarea" name="adv-textarea" placeholder="Comments..."></textarea>
+        </div>
+        <div class="button-row">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+    <!-- File upload mock -->
+    <div id="content-file" class="tab-content">
+      <h2>File Upload</h2>
+      <form>
+        <label for="fileInput">Choose file to upload:</label>
+        <input type="file" id="fileInput" name="fileInput" multiple>
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+    <!-- Login mock -->
+    <div id="content-login" class="tab-content">
+      <h2>Login</h2>
+      <form>
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" name="loginEmail" autocomplete="username">
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="loginPassword" autocomplete="current-password">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    const tabs = [
+      {btn: "tabSimple", content:"content-simple"},
+      {btn: "tabAdvanced", content:"content-advanced"},
+      {btn: "tabFile", content:"content-file"},
+      {btn: "tabLogin", content:"content-login"},
+    ];
+    function showTab(tab) {
+      tabs.forEach(({btn, content}) => {
+        document.getElementById(btn).classList.remove("active");
+        document.getElementById(content).classList.remove("active");
+      });
+      switch(tab) {
+        case 'simple':
+          document.getElementById("tabSimple").classList.add("active");
+          document.getElementById("content-simple").classList.add("active");
+          break;
+        case 'advanced':
+          document.getElementById("tabAdvanced").classList.add("active");
+          document.getElementById("content-advanced").classList.add("active");
+          break;
+        case 'file':
+          document.getElementById("tabFile").classList.add("active");
+          document.getElementById("content-file").classList.add("active");
+          break;
+        case 'login':
+          document.getElementById("tabLogin").classList.add("active");
+          document.getElementById("content-login").classList.add("active");
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
