@@ -1,10 +1,19 @@
-    html, body {
+/* App.css */
+
+html, body {
+      width: 100%;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Arial, sans-serif;
       background: #fafafb;
     }
+
+.site-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
     .navbar {
       position: fixed;
       top: 0;
@@ -48,16 +57,20 @@
       background: #1e2235;
       border-bottom: 2.5px solid #f5d04c;
     }
-    .container {
-      margin-top: 70px; /* So content is not hidden behind navbar */
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 32px 14px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 16px rgba(38,49,89,0.10);
-    }
+.container {
+  margin-top: 156px; /* 56px navbar */
+  margin-left: 100px;
+  margin-right: auto;
+  max-width: 840px;
+  width: 100%;
+  padding: 32px 14px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(38,49,89,0.10);
+  position: relative;
+}
+
+
     h2 {
       color: #263159;
       margin-top: 0;

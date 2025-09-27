@@ -1,3 +1,5 @@
+/* App.jsx */
+
 import React from "react";
 
 import SimplePage from "./pages/SimplePage";
@@ -14,27 +16,35 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="site-wrapper">
               <nav className="navbar">
                 <div className="navbar-left">
                   <button 
                     className={"nav-btn" + (this.state.pageName=='SimplePage' ? " active" : "") }  
                     id="tabSimple" 
-                    onClick={()=>this.setState({pageName: 'SimplePage'})}>Simple</button>
+                    onClick={()=>this.setState({pageName: 'SimplePage'})}>
+                      Simple
+                  </button>
                   <button 
                     className={"nav-btn" + (this.state.pageName=='AdvancedPage' ? " active" : "") }  
                     id="tabAdvanced" 
-                    onClick={()=>this.setState({pageName: 'AdvancedPage'})}>Advanced</button>
+                    onClick={()=>this.setState({pageName: 'AdvancedPage'})}>
+                      Advanced
+                  </button>
                   <button 
                     className={"nav-btn" + (this.state.pageName=='FileUploadPage' ? " active" : "") }  
                     id="tabFile" 
-                    onClick={()=>this.setState({pageName: 'FileUploadPage'})}>File upload</button>
+                    onClick={()=>this.setState({pageName: 'FileUploadPage'})}>
+                      File upload
+                  </button>
                 </div>
                 <div className="navbar-right">
                   <button 
                     className={"nav-btn" + (this.state.pageName=='LoginFormPage' ? " active" : "") }  
                     id="tabLogin" 
-                    onClick={()=>this.setState({pageName: 'LoginFormPage'})}>Login</button>
+                    onClick={()=>this.setState({pageName: 'LoginFormPage'})}>
+                      Login
+                  </button>
                 </div>
               </nav>
 
